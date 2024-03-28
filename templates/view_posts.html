@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        h1{
+            color:black;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <center><h1>HACKER</h1></center>
+        <center><img src="https://cybercrime.punjabpolice.gov.in/assets/images/Cybersecurity.jpg" height="700" width="1200" alt="image"></center>
+        {% for i in posts %}
+        <div class="post">
+            <h3>{{ i[1] }}</h3>
+            <p>{{ i[2] }}</p>
+            <small>posted at: {{ i[3] }}</small>
+            <form method="POST" action="{{url_for('delete_post',id=i[0])}}" onsubmit="return confirm('Are you sure you want to delete this post?');">
+            <button>Delete</button>
+            </form>
+            <form method="GET" action="{{url_for('update_post',id=i[0])}}">
+            <button>EDIT</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
